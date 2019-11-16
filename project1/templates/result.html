@@ -1,0 +1,50 @@
+<!doctype html>
+<link rel=stylesheet type=text/css href="{{ url_for('static', filename='style.css') }}">
+<html>
+	<head>
+        <title>Jeon sung yoon - project</title>
+    </head>
+    <body>
+    	{% if res < 0 %}
+    		<h2>we see your text is negative!</h2>
+    	{% endif %}
+    	{% if res == 0 %}
+    		<h2>we see your text is neutral or unspecified!</h2>
+    	{% endif %}
+    	{% if res > 0 %}
+    		<h2>we see your text is positive!</h2>
+    	{% endif %}
+    	
+    	<h2>polarity of your text : {{res}}</h2>
+		<h3>from your text...</h3>
+		<br>
+		<h4>total words : {{numset["total"]}}</h4>
+		
+		<br>
+		
+		<h2>negative words</h2>
+		<h4>number of words : {{numset["negative"]}}</h4>
+		<h4>polarity of negative words : {{pointset["negative"]}}</h4>
+		<h4>
+		{% for i in wordset["negative"] %}
+			{{i}}
+		{% endfor %}
+		</h4>
+		
+		<br>
+		
+		<h2>positive words</h2>
+		<h4>number of words : {{numset["positive"]}}</h4>
+		<h4>polarity of positive words : {{pointset["positive"]}}</h4>
+		<h4>
+		{% for i in wordset["positive"] %}
+			{{i}}
+		{% endfor %}
+		</h4>
+		
+		<br>
+		
+		<h2>neutral or unspecified words</h2>
+		<h4>number of words : {{numset["neutral"]}}</h4>
+    </body>
+</html>
